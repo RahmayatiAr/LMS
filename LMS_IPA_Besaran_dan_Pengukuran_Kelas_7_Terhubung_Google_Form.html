@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123b56">
+<title>EduSains | LMS IPA Kelas VII</title>
+<style>
+:root{--navy:#123b56;--teal:#0f8b8d;--soft:#eaf5f5;--ink:#20313d;--muted:#71818d;--line:#e3eaee;--bg:#f4f7fa;--green:#16865e}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 "Segoe UI",Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+.topbar{height:68px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 max(18px,calc((100% - 1280px)/2));gap:15px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}.brandmark{width:39px;height:39px;border-radius:12px;background:linear-gradient(145deg,#4cc8b5,#a3e5d7);color:#124758;display:grid;place-items:center;font-size:21px}.brand small{display:block;font-size:10px;letter-spacing:1.2px;color:#c1d8e2;font-weight:500}.topmeta{font-size:11px;color:#d6e4eb;display:flex;align-items:center;gap:12px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#d9f2ed;color:#13525a;font-weight:800}
+.shell{max-width:1280px;margin:23px auto;padding:0 16px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px}
+aside{height:max-content;position:sticky;top:15px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;box-shadow:0 7px 24px #17374c0a}
+.side-label{font-size:10px;letter-spacing:1.3px;color:#9aa9b2;font-weight:800;padding:8px 10px}
+.nav{width:100%;border:0;background:transparent;text-align:left;padding:10px 11px;border-radius:9px;color:#536775;font-size:12px;margin:2px 0;display:flex;gap:10px;align-items:center}.nav:hover{background:#f5f9fa}.nav.active{background:#eaf4f5;color:var(--navy);font-weight:800;box-shadow:inset 3px 0 var(--teal)}.nav i{font-style:normal;font-size:16px;width:18px;text-align:center}
+.side-course{background:#f6fafb;border:1px solid #e8eff2;padding:12px;border-radius:11px;margin-top:15px}.side-course b{font-size:11px;color:var(--navy)}.side-course p{font-size:10px;color:var(--muted);margin:3px 0}.progress{height:6px;background:#e3ecef;border-radius:20px;overflow:hidden;margin-top:9px}.progress span{height:100%;width:0;display:block;background:var(--teal);transition:.2s}
+main{min-width:0}.page{display:none}.page.active{display:block;animation:fade .2s ease}@keyframes fade{from{opacity:.65;transform:translateY(3px)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(115deg,#123b56,#17677a 70%,#11988d);border-radius:17px;color:#fff;padding:29px 30px;position:relative;overflow:hidden;box-shadow:0 8px 25px #17374c12}.hero:after{content:"⚛";position:absolute;right:25px;top:-25px;font-size:165px;color:#ffffff12}.eyebrow{font-size:10px;letter-spacing:1.5px;color:#a8e9df;font-weight:800;text-transform:uppercase}.hero h1{font-size:clamp(28px,4vw,41px);line-height:1.12;margin:10px 0;letter-spacing:-.8px}.hero p{max-width:650px;color:#d9e9ed;font-size:13px;margin:0 0 17px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 14px;border:0;border-radius:9px;font-size:12px;font-weight:800;text-decoration:none;margin:3px 5px 3px 0}.btn-primary{background:var(--teal);color:white}.btn-light{background:white;color:var(--navy)}.btn-outline{border:1px solid #ffffff70;background:#ffffff12;color:#fff}.btn-soft{background:#eaf4f5;color:#155b63}.btn-dark{background:var(--navy);color:white}.btn:hover{filter:brightness(.97);transform:translateY(-1px)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin:16px 0}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 5px 20px #183b4c07}.stat{padding:13px 15px}.stat strong{display:block;font-size:23px;color:var(--navy)}.stat span{font-size:10px;color:var(--muted)}
+.panel{padding:20px;margin-bottom:15px}.kicker{font-size:10px;font-weight:850;letter-spacing:1.2px;color:var(--teal)}h2{font-size:21px;line-height:1.3;color:var(--navy);margin:4px 0 8px}h3{font-size:15px;color:#24495b;margin:0 0 7px}h4{font-size:13px;color:#137978;margin:17px 0 5px}p{margin:7px 0 12px}.muted{font-size:12px;color:var(--muted)}.pill{display:inline-block;border-radius:30px;padding:4px 9px;background:#e9f7f4;color:#137a75;font-size:10px;font-weight:800}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature{border:1px solid var(--line);border-radius:12px;padding:15px}.feature .emoji{font-size:22px;margin-bottom:7px}.feature p{font-size:11px;color:var(--muted);margin:5px 0 10px}
+.info{background:#eef8f7;border-left:4px solid var(--teal);border-radius:8px;padding:12px 14px;color:#315d61;font-size:12px;margin:12px 0}.notice{background:#fff8e8;border-left:4px solid #d3a347;border-radius:8px;padding:12px 14px;color:#79591e;font-size:12px;margin:12px 0}
+.check{list-style:none;padding:0;margin:8px 0}.check li{font-size:13px;padding:5px 0 5px 23px;position:relative}.check li:before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:900}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:13px 0}.meta span{background:#f1f6f8;border-radius:8px;padding:6px 9px;color:#536a77;font-size:10px}
+.material-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:13px}.material-list{display:flex;flex-direction:column;gap:7px}.material-btn{background:white;border:1px solid var(--line);border-radius:10px;padding:10px 11px;text-align:left;color:#526875;font-size:11px}.material-btn.active{background:#eaf5f4;border-color:#a9d8d2;color:#155c62;font-weight:800}.material-btn small{display:block;font-size:9px;color:#91a2aa;margin-top:2px}
+.material-content{border:1px solid var(--line);border-radius:12px;padding:19px;min-height:410px}.material-content h3{font-size:19px;color:var(--navy);margin:8px 0}.material-content p,.material-content li{font-size:12px}.material-content ul,.material-content ol{padding-left:21px}.definition{background:#f4f8fa;border:1px solid #e4edf0;border-radius:10px;padding:12px 14px;margin:11px 0;font-size:12px}.formula{background:#edf8f6;border:1px solid #d8eeeb;border-radius:10px;padding:12px;text-align:center;font-size:18px;font-weight:800;color:#145e5c;margin:11px 0}.mat-actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:13px;margin-top:17px}
+.quiz{border:1px solid var(--line);border-radius:11px;padding:14px;margin:11px 0}.quiz h3{font-size:13px;line-height:1.5}.option{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:9px;margin:6px 0;font-size:11px;cursor:pointer}.option:hover{background:#f6fafb}.option input{accent-color:var(--teal);margin-top:3px}.option.good{background:#effaf3;border-color:#82c99b}.option.bad{background:#fff2ef;border-color:#e2a19a}.feedback{display:none;padding:9px 10px;border-radius:8px;margin-top:7px;font-size:11px}.feedback.show{display:block}.feedback.good{background:#e9f8ef;color:#17613c}.feedback.bad{background:#fff0ed;color:#953f36}#score{display:none;background:#edf8f5;padding:14px;border-radius:9px;margin:12px 0;color:#155c57}#score.show{display:block}
+.taskbox{border:1px solid #dce9eb;background:linear-gradient(130deg,#f8fbfc,#eff8f7);border-radius:13px;padding:17px;margin-top:14px}.taskhead{display:flex;gap:12px;align-items:center}.taskicon{width:46px;height:46px;background:#fff;border-radius:12px;display:grid;place-items:center;font-size:22px;box-shadow:0 3px 12px #123b5610}
+.announcement{display:flex;gap:12px;border:1px solid var(--line);border-radius:11px;padding:13px;margin:9px 0}.annicon{width:39px;height:39px;border-radius:10px;background:#edf7f7;display:grid;place-items:center;flex:0 0 39px;font-size:18px}
+.steps{padding-left:22px}.steps li{font-size:12px;padding:5px 0}
+footer{text-align:center;color:#92a2ab;font-size:10px;padding:20px}
+#toast{display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#173c50;color:white;padding:11px 15px;border-radius:9px;font-size:12px;z-index:10;box-shadow:0 8px 24px #0002;max-width:90%;text-align:center}#toast.show{display:block}
+@media(max-width:850px){.shell{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:2px}.side-label,.side-course{grid-column:1/-1}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.topbar{padding:0 13px;height:61px}.topmeta .role{display:none}.shell{margin:13px auto;padding:0 10px;gap:12px}.hero{padding:22px 19px}.hero:after{font-size:105px;right:0}.panel{padding:15px}.grid2{grid-template-columns:1fr}.material-layout{grid-template-columns:1fr}.material-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.material-content{padding:15px;min-height:0}.nav{font-size:11px;padding:9px 8px}.nav i{font-size:14px}.stats{gap:8px}.stat{padding:10px}.stat strong{font-size:21px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div class="brand"><div class="brandmark">⚛</div><div>EDUSAINS <small>LEARNING MANAGEMENT SYSTEM</small></div></div>
+ <div class="topmeta"><span class="role">ILMU PENGETAHUAN ALAM • KELAS VII</span><div class="avatar">VII</div></div>
+</header>
+<div class="shell">
+<aside class="sidebar">
+ <div class="side-label">MENU PEMBELAJARAN</div>
+ <button class="nav active" data-page="beranda" onclick="go('beranda')"><i>⌂</i> Beranda</button>
+ <button class="nav" data-page="course" onclick="go('course')"><i>▤</i> Deskripsi Course</button>
+ <button class="nav" data-page="materi" onclick="go('materi')"><i>▣</i> Materi Pembelajaran</button>
+ <button class="nav" data-page="kuis" onclick="go('kuis')"><i>✎</i> Kuis & Latihan</button>
+ <button class="nav" data-page="tugas" onclick="go('tugas')"><i>⇧</i> Pengumpulan Tugas</button>
+ <button class="nav" data-page="pengumuman" onclick="go('pengumuman')"><i>◉</i> Pengumuman</button>
+ <button class="nav" data-page="panduan" onclick="go('panduan')"><i>ⓘ</i> Panduan LMS</button>
+ <div class="side-course"><b>IPA • BESARAN DAN PENGUKURAN</b><p>SMP Kelas VII</p><div class="progress"><span id="sidebarbar"></span></div><p id="sidepct">0% materi selesai</p></div>
+</aside>
+<main>
+<section id="beranda" class="page active">
+ <div class="hero"><div class="eyebrow">ILMU PENGETAHUAN ALAM • SMP KELAS VII</div><h1>Besaran dan<br>Pengukuran</h1><p>Kenali besaran, satuan, dan alat ukur. Pelajari bagaimana pengukuran dilakukan secara teliti untuk memahami berbagai gejala alam di sekitar kita.</p><button class="btn btn-light" onclick="go('materi')">Mulai Pembelajaran →</button><button class="btn btn-outline" onclick="go('course')">Deskripsi Course</button></div>
+ <div class="stats"><div class="stat"><strong>5</strong><span>Unit materi pembelajaran</span></div><div class="stat"><strong>10</strong><span>Soal latihan pilihan ganda</span></div><div class="stat"><strong>1</strong><span>Tugas praktik pengukuran</span></div><div class="stat"><strong id="homePct">0%</strong><span>Progres pembelajaran</span></div></div>
+ <div class="panel"><div class="kicker">MULAI DARI SINI</div><h2>Selamat Datang di Kelas IPA!</h2><p class="muted">Ikuti alur pembelajaran untuk memahami konsep besaran dan pengukuran.</p><div class="grid2">
+  <div class="feature"><div class="emoji">📘</div><h3>Pelajari Materi</h3><p>Materi disusun dalam lima unit agar mudah dipahami secara bertahap.</p><button class="btn btn-soft" onclick="go('materi')">Buka Materi →</button></div>
+  <div class="feature"><div class="emoji">🧠</div><h3>Uji Pemahaman</h3><p>Kerjakan kuis dan dapatkan umpan balik langsung untuk setiap jawaban.</p><button class="btn btn-soft" onclick="go('kuis')">Mulai Kuis →</button></div>
+  <div class="feature"><div class="emoji">📏</div><h3>Praktik Pengukuran</h3><p>Terapkan konsep melalui kegiatan mengukur benda di lingkungan sekitar.</p><button class="btn btn-soft" onclick="go('tugas')">Lihat Tugas →</button></div>
+  <div class="feature"><div class="emoji">📢</div><h3>Informasi Kelas</h3><p>Periksa pengumuman dan petunjuk kegiatan pembelajaran.</p><button class="btn btn-soft" onclick="go('pengumuman')">Baca Pengumuman →</button></div>
+ </div></div>
+ <div class="panel"><h2>Progres Belajarmu</h2><p class="muted">Tandai unit materi yang sudah selesai dipelajari.</p><div class="progress"><span id="homebar"></span></div><p class="muted" id="progressText">0 dari 5 unit selesai</p></div>
+</section>
+
+<section id="course" class="page">
+ <div class="panel"><div class="kicker">INFORMASI MATA PELAJARAN</div><h2>Deskripsi Course: Besaran dan Pengukuran</h2><div class="meta"><span>📚 IPA</span><span>🎓 SMP Kelas VII</span><span>⏱️ 5 Unit Materi</span><span>📝 Kuis & Tugas Praktik</span></div>
+ <h3>Gambaran Umum</h3><p>Besaran dan pengukuran merupakan konsep dasar dalam IPA. Dalam kehidupan sehari-hari, kita sering mengukur panjang meja, massa buah, waktu tempuh, suhu tubuh, dan berbagai hal lainnya. Pengukuran membantu kita memperoleh data yang dapat dibandingkan dan digunakan untuk menjelaskan suatu peristiwa secara ilmiah.</p>
+ <p>Melalui course ini, peserta didik akan mengenal besaran, satuan, Sistem Internasional (SI), alat ukur, cara membaca hasil pengukuran, serta pentingnya ketelitian dan keselamatan saat melakukan kegiatan pengukuran.</p>
+ <h3>Tujuan Pembelajaran</h3><p>Setelah mengikuti pembelajaran, peserta didik diharapkan mampu:</p><ul class="check"><li>Menjelaskan pengertian besaran dan pengukuran.</li><li>Membedakan besaran pokok dan besaran turunan.</li><li>Mengenali satuan baku dan satuan tidak baku serta satuan SI.</li><li>Memilih alat ukur yang sesuai dengan objek yang diukur.</li><li>Membaca hasil pengukuran panjang, massa, waktu, dan suhu secara sederhana.</li><li>Melakukan pengukuran dengan teliti, menggunakan satuan yang tepat, dan mencatat hasilnya.</li></ul>
+ <h3>Aktivitas Pembelajaran</h3><p>Mengamati benda di sekitar, membaca materi, melakukan latihan identifikasi besaran dan alat ukur, mengerjakan kuis, serta melakukan praktik pengukuran sederhana.</p>
+ <h3>Penilaian</h3><p>Pengetahuan dinilai melalui kuis pilihan ganda. Keterampilan dinilai melalui tugas praktik pengukuran dan laporan hasil pengamatan.</p></div>
+</section>
+
+<section id="materi" class="page">
+ <div class="panel"><div class="kicker">BAHAN AJAR DIGITAL</div><h2>Materi Pembelajaran</h2><p class="muted">Pilih unit materi di sebelah kiri. Baca penjelasan dan tandai selesai setelah mempelajarinya.</p><div class="material-layout"><div class="material-list" id="materialList"></div><article class="material-content" id="materialContent"></article></div></div>
+</section>
+
+<section id="kuis" class="page">
+ <div class="panel"><div class="kicker">ASESMEN FORMATIF</div><h2>Kuis Besaran dan Pengukuran</h2><p class="muted">Pilih satu jawaban untuk setiap pertanyaan. Umpan balik benar atau salah dan pembahasan akan tampil setelah pilihan diklik.</p>
+ <div id="quizContainer"></div><div id="score"></div><button class="btn btn-primary" onclick="showScore()">Lihat Nilai Akhir</button><button class="btn btn-soft" onclick="resetQuiz()">Ulangi Kuis</button></div>
+</section>
+
+<section id="tugas" class="page">
+ <div class="panel"><div class="kicker">TUGAS PRAKTIK INDIVIDU</div><h2>Praktik Mengukur Benda di Sekitar Kita</h2><p>Ukurlah beberapa benda di lingkungan rumah atau sekolah. Catat hasil pengukuran dan sajikan dalam laporan sederhana.</p>
+ <h3>Petunjuk Pengerjaan</h3><ol class="steps"><li>Pilih minimal tiga benda yang mudah ditemukan, misalnya buku, meja, pensil, atau botol minum.</li><li>Ukur panjang atau tinggi benda menggunakan penggaris atau meteran.</li><li>Jika tersedia, ukur massa benda menggunakan timbangan.</li><li>Catat nama benda, besaran yang diukur, alat ukur, hasil, dan satuannya.</li><li>Tuliskan kesimpulan singkat tentang pentingnya menggunakan alat ukur dan satuan yang tepat.</li></ol>
+ <h3>Format Laporan</h3><ul class="check"><li>Judul dan identitas peserta didik.</li><li>Tabel hasil pengukuran minimal tiga benda.</li><li>Foto kegiatan atau foto objek yang diukur.</li><li>Kesimpulan 1–2 paragraf.</li></ul>
+ <div class="notice">Simpan laporan dalam format PDF atau DOCX. Foto kegiatan dapat digabungkan ke dalam laporan.</div>
+ <div class="taskbox"><div class="taskhead"><div class="taskicon">📤</div><div><h3>Pengumpulan Tugas Online</h3><p class="muted">Kumpulkan laporan praktik melalui formulir kelas IPA.</p></div></div>
+ <p class="muted">Klik tombol di bawah untuk membuka formulir pengumpulan tugas. Isi nama, kelas, dan unggah berkas laporan agar dapat diperiksa guru.</p>
+ <a class="btn btn-primary" id="formButton" href="#" onclick="openSubmission(event)">Buka Formulir & Unggah Tugas ↗</a></div>
+ </div>
+</section>
+
+<section id="pengumuman" class="page">
+ <div class="panel"><div class="kicker">INFORMASI KELAS</div><h2>Pengumuman</h2>
+  <div class="announcement"><div class="annicon">👋</div><div><b>Selamat datang di kelas IPA!</b><p class="muted">Selamat mengikuti pembelajaran topik Besaran dan Pengukuran. Awali dengan membaca deskripsi course dan tujuan pembelajaran.</p><span class="muted">Guru IPA • Informasi kelas</span></div></div>
+  <div class="announcement"><div class="annicon">📏</div><div><b>Siapkan alat ukur sederhana</b><p class="muted">Untuk kegiatan praktik, siapkan penggaris atau meteran. Timbangan dapat digunakan apabila tersedia.</p><span class="muted">Guru IPA • Persiapan praktik</span></div></div>
+  <div class="announcement"><div class="annicon">📝</div><div><b>Kuis dan pengumpulan tugas</b><p class="muted">Kerjakan kuis setelah mempelajari seluruh materi. Unggah laporan praktik melalui formulir yang tersedia pada menu Pengumpulan Tugas.</p><span class="muted">Guru IPA • Pengingat kegiatan</span></div></div>
+  <div class="announcement"><div class="annicon">🤝</div><div><b>Utamakan ketelitian dan keselamatan</b><p class="muted">Gunakan alat ukur dengan benar, lakukan pengukuran secara teliti, dan rapikan kembali alat setelah digunakan.</p><span class="muted">Guru IPA • Etika kegiatan</span></div></div>
+ </div>
+</section>
+
+<section id="panduan" class="page">
+ <div class="panel"><div class="kicker">PUSAT BANTUAN</div><h2>Petunjuk Penggunaan LMS</h2><ol class="steps"><li><b>Beranda:</b> lihat informasi course dan progres belajarmu.</li><li><b>Deskripsi Course:</b> baca tujuan pembelajaran, aktivitas, dan penilaian.</li><li><b>Materi Pembelajaran:</b> pilih setiap unit, pelajari penjelasan, lalu tandai selesai.</li><li><b>Kuis & Latihan:</b> pilih jawaban pada setiap soal dan baca pembahasan yang muncul.</li><li><b>Pengumpulan Tugas:</b> buka formulir online, isi identitas, lalu unggah laporan praktik.</li><li><b>Pengumuman:</b> periksa informasi kelas secara berkala.</li></ol></div>
+ <div class="panel"><h2>Belajar dari Berbagai Perangkat</h2><p class="muted">LMS dirancang responsif sehingga dapat dibuka melalui laptop, komputer, tablet, maupun telepon pintar dengan browser modern.</p><div class="info">Gunakan menu navigasi untuk berpindah halaman. Progres materi disimpan pada browser yang sedang digunakan.</div></div>
+</section>
+</main></div>
+<footer>EDUSAINS • RUANG BELAJAR IPA • SMP KELAS VII</footer>
+<div id="toast"></div>
+
+<script>
+// Ganti alamat di bawah dengan tautan Google Form khusus pengumpulan tugas IPA.
+const GOOGLE_FORM_URL = "https://forms.gle/u2fYNLpZbXNPkevU6";
+function go(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.page===id));
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500)}
+function openSubmission(e){
+ e.preventDefault();
+ if(!GOOGLE_FORM_URL){toast('Tautan Google Form IPA belum dipasang. Kirim tautannya agar tombol ini dapat dihubungkan.');return}
+ window.open(GOOGLE_FORM_URL,'_blank','noopener');
+}
+const units=[
+{title:"1. Pengertian Besaran dan Pengukuran",short:"Konsep dasar",body:`
+<h3>Apa Itu Besaran?</h3><p>Besaran adalah sesuatu yang dapat diukur dan dinyatakan dengan angka serta satuan. Contohnya panjang meja 120 sentimeter, massa beras 2 kilogram, dan waktu belajar 30 menit.</p>
+<div class="definition"><b>Ingat!</b> Hasil pengukuran harus memiliki dua bagian, yaitu nilai atau angka dan satuan. Angka 10 saja belum menjelaskan apa yang diukur. Sepuluh sentimeter berbeda dengan sepuluh kilogram.</div>
+<h4>Apa Itu Pengukuran?</h4><p>Pengukuran adalah kegiatan membandingkan suatu besaran dengan satuan sejenis yang dijadikan acuan. Ketika mengukur panjang buku menggunakan penggaris, kita membandingkan panjang buku dengan skala sentimeter pada penggaris.</p>
+<h4>Mengapa pengukuran penting?</h4><ul><li>Membantu memperoleh informasi yang lebih tepat.</li><li>Memudahkan perbandingan antara benda atau peristiwa.</li><li>Mendukung kegiatan eksperimen dan penyelidikan IPA.</li><li>Mengurangi perkiraan yang hanya berdasarkan penglihatan.</li></ul>
+<h4>Contoh dalam kehidupan sehari-hari</h4><p>Pedagang menimbang buah, dokter mengukur suhu tubuh, tukang bangunan mengukur panjang ruangan, dan atlet mencatat waktu berlari.</p>`},
+{title:"2. Besaran Pokok dan Turunan",short:"Jenis besaran",body:`
+<h3>Besaran Pokok</h3><p>Besaran pokok adalah besaran dasar yang satuannya telah ditetapkan dan tidak diturunkan dari besaran lain. Dalam Sistem Internasional (SI) terdapat tujuh besaran pokok.</p>
+<ul><li>Panjang — meter (m)</li><li>Massa — kilogram (kg)</li><li>Waktu — sekon (s)</li><li>Kuat arus listrik — ampere (A)</li><li>Suhu termodinamik — kelvin (K)</li><li>Jumlah zat — mol (mol)</li><li>Intensitas cahaya — kandela (cd)</li></ul>
+<h3>Besaran Turunan</h3><p>Besaran turunan adalah besaran yang dibentuk dari gabungan satu atau lebih besaran pokok melalui operasi matematika.</p>
+<div class="definition"><b>Contoh besaran turunan:</b><br>Luas = panjang × lebar, satuan meter persegi (m²).<br>Volume = panjang × lebar × tinggi, satuan meter kubik (m³).<br>Kecepatan = jarak ÷ waktu, satuan meter per sekon (m/s).</div>
+<h4>Contoh sederhana</h4><p>Sebuah lantai memiliki panjang 4 meter dan lebar 3 meter. Luas lantai adalah 4 × 3 = 12 m². Luas merupakan besaran turunan karena diperoleh dari perkalian dua besaran panjang.</p>`},
+{title:"3. Satuan Baku dan Sistem SI",short:"Satuan pengukuran",body:`
+<h3>Apa Itu Satuan?</h3><p>Satuan adalah pembanding yang digunakan dalam pengukuran. Satuan membantu kita menyatakan hasil pengukuran secara jelas dan dapat dipahami orang lain.</p>
+<h4>Satuan baku</h4><p>Satuan baku adalah satuan yang nilainya disepakati dan berlaku umum. Contohnya meter, kilogram, dan sekon. Pengukuran dengan satuan baku menghasilkan data yang dapat dibandingkan.</p>
+<h4>Satuan tidak baku</h4><p>Satuan tidak baku adalah satuan yang nilainya tidak tetap atau dapat berbeda antara orang satu dengan lainnya. Contohnya jengkal, depa, langkah, dan hasta.</p>
+<div class="definition"><b>Contoh:</b> panjang meja diukur dengan 6 jengkal. Hasilnya dapat berbeda jika diukur oleh orang yang memiliki ukuran jengkal berbeda. Karena itu, pengukuran ilmiah menggunakan satuan baku.</div>
+<h4>Sistem Internasional (SI)</h4><p>SI adalah sistem satuan yang digunakan secara internasional agar hasil pengukuran seragam. Beberapa satuan SI yang sering digunakan dalam kehidupan sehari-hari adalah meter (m), kilogram (kg), sekon (s), dan kelvin (K).</p>
+<h4>Awalan satuan</h4><ul><li>Kilo (k) = 1.000 kali satuan dasar; 1 km = 1.000 m.</li><li>Desi (d) = sepersepuluh; 1 dm = 0,1 m.</li><li>Sentí (c) = seperseratus; 1 cm = 0,01 m.</li><li>Mili (m) = seperseribu; 1 mm = 0,001 m.</li></ul>`},
+{title:"4. Alat Ukur dan Cara Menggunakannya",short:"Mengenal alat ukur",body:`
+<h3>Memilih Alat Ukur yang Tepat</h3><p>Setiap alat ukur dirancang untuk mengukur besaran tertentu. Gunakan alat yang sesuai dengan objek dan tingkat ketelitian yang dibutuhkan.</p>
+<h4>Alat ukur panjang</h4><ul><li><b>Penggaris:</b> mengukur benda pendek seperti buku atau pensil.</li><li><b>Meteran pita:</b> mengukur kain, tinggi badan, atau panjang ruangan.</li><li><b>Jangka sorong:</b> mengukur diameter luar, diameter dalam, dan kedalaman dengan ketelitian lebih tinggi.</li><li><b>Mikrometer sekrup:</b> mengukur benda sangat tipis atau kecil, misalnya ketebalan kertas atau diameter kawat.</li></ul>
+<h4>Alat ukur besaran lainnya</h4><ul><li><b>Neraca/timbangan:</b> mengukur massa benda.</li><li><b>Stopwatch:</b> mengukur selang waktu.</li><li><b>Termometer:</b> mengukur suhu.</li><li><b>Amperemeter:</b> mengukur kuat arus listrik.</li></ul>
+<h4>Langkah menggunakan penggaris</h4><ol><li>Letakkan angka nol penggaris tepat pada salah satu ujung benda.</li><li>Pastikan penggaris sejajar dengan benda.</li><li>Lihat angka skala pada ujung benda yang lain.</li><li>Baca skala dengan posisi mata tegak lurus untuk menghindari kesalahan pandang.</li><li>Tuliskan angka hasil pengukuran beserta satuannya.</li></ol>
+<div class="info">Contoh: ujung pensil berada pada angka 14 cm setelah titik awal di angka 0 cm. Panjang pensil adalah 14 cm.</div>`},
+{title:"5. Ketelitian dan Keselamatan Mengukur",short:"Praktik pengukuran",body:`
+<h3>Ketelitian dalam Pengukuran</h3><p>Pengukuran perlu dilakukan dengan teliti agar hasilnya mendekati nilai sebenarnya. Ketelitian dipengaruhi oleh alat ukur, cara penggunaan, kondisi benda, dan cara membaca skala.</p>
+<h4>Hal yang perlu diperhatikan</h4><ul><li>Pilih alat ukur dengan rentang dan skala yang sesuai.</li><li>Periksa posisi nol sebelum mulai mengukur.</li><li>Letakkan alat dan benda dengan benar.</li><li>Baca skala dengan posisi mata tegak lurus.</li><li>Ulangi pengukuran bila diperlukan dan catat hasilnya dengan satuan.</li></ul>
+<h4>Kesalahan pengukuran</h4><p>Kesalahan dapat terjadi karena posisi mata tidak tepat, alat ukur tidak dimulai dari angka nol, alat rusak, atau cara penggunaan yang keliru. Karena itu, periksa alat dan ulangi pengukuran jika hasilnya terasa tidak wajar.</p>
+<h4>Keselamatan saat praktik</h4><ul><li>Gunakan alat ukur sesuai petunjuk.</li><li>Jangan bermain-main dengan alat yang memiliki ujung tajam atau bagian bergerak.</li><li>Letakkan alat kembali setelah digunakan.</li><li>Jaga meja dan area kerja tetap rapi.</li></ul>
+<div class="definition"><b>Contoh kegiatan:</b> ukur panjang tiga benda menggunakan penggaris. Catat nama benda, hasil pengukuran, dan satuannya. Bandingkan hasilnya dengan teman untuk melihat apakah terdapat perbedaan.</div>`}
+];
+let finished=new Set();try{finished=new Set(JSON.parse(localStorage.getItem('edusainsFinished')||'[]'))}catch(e){}
+let unitNow=0;
+function drawUnits(){
+ const list=document.getElementById('materialList');list.innerHTML='';
+ units.forEach((u,i)=>{const b=document.createElement('button');b.className='material-btn'+(i===unitNow?' active':'');b.innerHTML=(finished.has(i)?'✓ ':'')+u.title+'<small>'+u.short+'</small>';b.onclick=()=>{unitNow=i;drawUnits()};list.appendChild(b)});
+ const u=units[unitNow],done=finished.has(unitNow);
+ document.getElementById('materialContent').innerHTML='<span class="pill">UNIT '+(unitNow+1)+' DARI 5</span>'+u.body+'<div class="mat-actions"><button class="btn btn-soft" onclick="moveUnit(-1)" '+(unitNow===0?'disabled':'')+'>← Sebelumnya</button><button class="btn btn-primary" onclick="markUnit()">'+(done?'✓ Selesai Dipelajari':'Tandai Selesai')+'</button><button class="btn btn-soft" onclick="moveUnit(1)" '+(unitNow===4?'disabled':'')+'>Berikutnya →</button></div>';
+ updateProgress();
+}
+function markUnit(){finished.add(unitNow);try{localStorage.setItem('edusainsFinished',JSON.stringify([...finished]))}catch(e){}drawUnits()}
+function moveUnit(n){unitNow=Math.max(0,Math.min(4,unitNow+n));drawUnits()}
+function updateProgress(){let p=Math.round(finished.size/5*100);document.getElementById('homePct').textContent=p+'%';document.getElementById('homebar').style.width=p+'%';document.getElementById('sidebarbar').style.width=p+'%';document.getElementById('sidepct').textContent=p+'% materi selesai';document.getElementById('progressText').textContent=finished.size+' dari 5 unit selesai';}
+const questions=[
+{q:"Sesuatu yang dapat diukur dan dinyatakan dengan angka serta satuan disebut ...",o:["Besaran","Pengamatan","Perkiraan","Kesimpulan"],a:0,e:"Besaran adalah sesuatu yang dapat diukur dan dinyatakan dengan angka serta satuan."},
+{q:"Hasil pengukuran yang benar sebaiknya ditulis dalam bentuk ...",o:["Angka saja","Satuan saja","Angka dan satuan","Nama alat ukur saja"],a:2,e:"Hasil pengukuran harus memuat nilai atau angka dan satuan agar jelas."},
+{q:"Berikut yang termasuk besaran pokok adalah ...",o:["Luas","Volume","Kecepatan","Massa"],a:3,e:"Massa merupakan besaran pokok dengan satuan SI kilogram (kg)."},
+{q:"Satuan SI untuk panjang adalah ...",o:["Liter","Meter","Kilogram","Sekon"],a:1,e:"Satuan dasar SI untuk panjang adalah meter (m)."},
+{q:"Satuan tidak baku yang biasa digunakan untuk memperkirakan panjang adalah ...",o:["Meter","Sentimeter","Jengkal","Kilometer"],a:2,e:"Jengkal adalah satuan tidak baku karena ukuran tangan setiap orang berbeda."},
+{q:"Alat yang tepat untuk mengukur massa buah adalah ...",o:["Stopwatch","Termometer","Timbangan","Penggaris"],a:2,e:"Timbangan atau neraca digunakan untuk mengukur massa benda."},
+{q:"Alat yang sesuai untuk mengukur diameter kawat kecil dengan teliti adalah ...",o:["Meteran pita","Mikrometer sekrup","Stopwatch","Termometer"],a:1,e:"Mikrometer sekrup dirancang untuk mengukur benda berukuran sangat kecil atau tipis."},
+{q:"Besaran turunan yang diperoleh dari panjang dikali lebar adalah ...",o:["Massa","Waktu","Luas","Suhu"],a:2,e:"Luas diperoleh dari perkalian panjang dan lebar, dengan satuan m²."},
+{q:"Satu kilometer sama dengan ...",o:["10 meter","100 meter","1.000 meter","10.000 meter"],a:2,e:"Awalan kilo berarti seribu, sehingga 1 km = 1.000 m."},
+{q:"Agar tidak terjadi kesalahan paralaks saat membaca penggaris, posisi mata sebaiknya ...",o:["Miring dari kiri","Tegak lurus terhadap skala","Jauh dari penggaris","Berada di bawah meja"],a:1,e:"Mata harus tegak lurus terhadap skala yang dibaca agar tidak terjadi kesalahan pandang."}
+];
+let selected={};
+function drawQuiz(){
+ const root=document.getElementById('quizContainer');root.innerHTML='';
+ questions.forEach((q,i)=>{
+  const box=document.createElement('div');box.className='quiz';
+  const h=document.createElement('h3');h.textContent=(i+1)+'. '+q.q;box.appendChild(h);
+  q.o.forEach((v,j)=>{
+   const lab=document.createElement('label');lab.className='option';const inp=document.createElement('input');inp.type='radio';inp.name='q'+i;inp.checked=selected[i]===j;inp.addEventListener('change',()=>{selected[i]=j;feedback(i,box)});lab.appendChild(inp);lab.append(document.createTextNode(String.fromCharCode(65+j)+'. '+v));box.appendChild(lab);
+  });
+  const f=document.createElement('div');f.className='feedback';box.appendChild(f);root.appendChild(box);if(selected[i]!==undefined)feedback(i,box);
+ });
+}
+function feedback(i,box){const ok=selected[i]===questions[i].a,f=box.querySelector('.feedback');f.className='feedback show '+(ok?'good':'bad');f.textContent=(ok?'✓ Benar! ':'✗ Belum tepat. ')+questions[i].e;box.querySelectorAll('.option').forEach((el,j)=>{el.classList.toggle('good',j===questions[i].a);el.classList.toggle('bad',j===selected[i]&&!ok)})}
+function showScore(){let n=0;questions.forEach((q,i)=>{if(selected[i]===q.a)n++});const missing=questions.length-Object.keys(selected).length,sc=document.getElementById('score');sc.className='show';sc.innerHTML='<b>Nilai: '+n*10+' / 100</b><br>'+n+' dari 10 jawaban benar.'+(missing?' '+missing+' soal belum dijawab.':' Semua soal sudah dijawab.')+'<br>'+(n>=8?'Hebat! Pemahamanmu sangat baik.':n>=6?'Bagus. Pelajari kembali soal yang masih keliru.':'Terus berlatih dan baca kembali materi pembelajaran.')};
+function resetQuiz(){selected={};const s=document.getElementById('score');s.className='';s.innerHTML='';drawQuiz()}
+drawUnits();drawQuiz();updateProgress();
+</script>
+</body>
+</html>
